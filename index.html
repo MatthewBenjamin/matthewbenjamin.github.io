@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matt Benjamin: Full Stack Developer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <a class="toggle-nav">&#x2261;</a>
+    <nav class="top-nav">
+        <ul class="header-nav-links">
+            <li><a href="#skills-nav">Skills</a><span></span></li><li><a href="#portfolio-nav">Portfolio</a><span></span></li><li><a href="#about-nav">About</a><span></span></li><li><a href="#contact-nav">Contact</a></li><li><a href="#">Resume</a></li>
+        </ul>
+        <ul class="mobile-nav-social social-links"></ul>
+    </nav>
+    <main>
+        <section class="home">
+            <header>
+                <h1 class="main-heading">Matt Benjamin</h1>
+                <h2>Full Stack Developer</h2>
+            </header>
+
+            <ul class="social-links"></ul>
+
+            <script id="social-media-template" type="text/html">
+                <li>
+                    <a class="social-icon linkedin-icon" href="https://www.linkedin.com/in/matthewgbenjamin"></a>
+                </li>
+                <li>
+                    <a class="social-icon email-icon" href="mailto:matt.g.benjamin@gmail.com"></a>
+                </li>
+                <li>
+                    <a class="social-icon github-icon" href="https://github.com/MatthewBenjamin"></a>
+                </li>
+            </script>
+
+        </section>
+
+        <section class="skills">
+            <span class="nav-id" id="skills-nav"></span>
+            <h2>Skills</h2>
+            <a class="resume button" href="#">Download Resume</a>
+            <script id="skills-template" type="text/x-handlebars-template">
+                {{#each skills}}
+                <div class="skill-category">
+                    <h3 class="skill-category-name">{{header}}</h3>
+                        {{#if children}}
+                        {{#each children}}
+                            <li class="sub-skill">
+                                <h4>{{header}}</h4>
+                                <ul>
+                                {{#each this.skills}}
+                                    <li class="skill">{{this}}</li>
+                                {{/each}}
+                                </ul>
+                            </li>
+                        {{/each}}
+                        {{/if}}
+                        {{#if skills}}
+                        {{#each skills}}
+                            <li class="skill">{{this}}</li>
+                        {{/each}}
+                        {{/if}}
+                    </ul>
+                </div>
+                {{/each}}
+            </script>
+        </section>
+
+        <section class="portfolio">
+            <span class="nav-id" id="portfolio-nav"></span>
+            <h2>Portfolio</h2>
+            <div class="projects-list"></div>
+            <script id="projects" type="text/x-handlebars-template">
+                <ul>
+                    {{#each projects }}
+                    <li style="order: {{flex-order}}">
+                        <a class="open-portfolio-item" data-index="{{@index}}">
+                            <article class="portfolio-item">
+                                <div class="portfolio-preview">
+                                    <h3 class="portfolio-item-title">{{title}}</h3>
+                                    <img src="{{image}}" class="preview-pic">
+                                </div>
+                                <div class="portfolio-blurb">
+                                    <h3 class="portfolio-item-title">{{subtitle}}</h3>
+                                    {{#each blurb}}
+                                        <p>{{this}}</p>
+                                    {{/each}}
+                                </div>
+                            </article>
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </script>
+            <div class="portfolio-item-popup"></div>
+        </section>
+        <script id="portfolio-item-template" type="text/x-handlebars-template">
+            <article class="popup-content">
+                <header>
+                    <a class="popup-close">&#10005;</a>
+                    <h1 class="main-heading">{{title}}</h1>
+                    <h2>{{subtitle}}</h2>
+                </header>
+                <div class="popup-links">
+                    {{#if link}}
+                        <a class="button" href="{{link}}">Live Link</a>
+                    {{/if}}
+                    {{#if github}}
+                        <a class="button" href="{{github}}">Source Code</a>
+                    {{/if }}
+                </div>
+                <div class="popup-info">
+                    <section>
+                        <h3>Description</h3>
+                        <p>{{description}}</p>
+                    </section>
+                    <section>
+                        <h3>Technologies</h3>
+                        <ul>
+                            {{#each technologies}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </section>
+                </div>
+            </article>
+        </script>
+
+        <section class="about">
+            <span class="nav-id" id="about-nav"></span>
+            <h2>About Me</h2>
+            <div class="biopic-div"></div>
+                <p>
+                    Coming Soon!
+                </p>
+        </section>
+
+        <section class="contact">
+            <span class="nav-id" id="contact-nav"></span>
+            <h2>Contact</h2>
+            <ul>
+                <li>Email me <a href="mailto:matt.g.benjamin@gmail.com">here</a></li>
+                <li>Download my resume <a href="#">here</a></li>
+                <li>View my code <a href="https://github.com/MatthewBenjamin">here</a></li>
+                <li>See my LinkedIn <a href="https://www.linkedin.com/in/matthewgbenjamin">here</a></li>
+            </ul>
+        </section>
+    </main>
+    <script   src="https://code.jquery.com/jquery-3.0.0.slim.min.js"   integrity="sha256-Rf4BadfyCtsvHmO89BUZcbYvNNvZvOT08ALfEzvCsD0="   crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
